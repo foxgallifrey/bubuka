@@ -7,6 +7,7 @@ use App\Models\City;
 use App\Models\Country;
 use App\Models\PartsOfTheWorld;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,7 +20,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        $data_user = [['testlogin', 'testpassword']];
+        $data_user = [['testlogin', Hash::make('testpassword')]];
         foreach ($data_user as $data){
             if (empty(User::where('email', $data[0])->first())){
                 User::create(['email' => $data[0],
